@@ -1,11 +1,34 @@
 # :white_check_mark: Minishell(project 2021)
 
 ## Описание
-В одно время все программисты согласились с тем, что общение с компьютером с использованием переключателей 1/0 серьезно раздражает.
+В своё время программисты согласились с тем, что общение с компьютером с использованием 1 и 0 немного раздражает.
 Вполне логично, что им пришла в голову идея общаться с компьютером с помощью интерактивных строк команд на языке, несколько близком к английскому.
 Таким образом, основная задача этого проекта - написать свою собственную мини-оболочку на C.
 
-## Немного теории  
+## Функции, которые были реализованы
+- История.
+- Поиск и запуск нужного исполняемого файла (на основе переменной **PATH** или с помощью относительного или абсолютного пути).
+- Встроенные функции:
+	- `cd` with only a relative or absolute path.
+	- `pwd` with no options.
+	- `echo` with `-n` option.
+	- `export` with no options.
+	- `unset` with no options.
+	- `env` with no options.
+	- `exit` with no options.
+- Перенаправления:
+	- `<` redirect input.
+	- `>` redirect output.
+	- `>>`redirect output with append mode.
+- Каналы(pipes) `|` выхоодыне данные каждой команды через канал направляются как входные данные другой команды.
+- Переменные окружения (**$** следующие ща символом) заменяются их значениями.
+- '$?` заменяется статусом завершения последней команды.
+- Сигналы работают также как в bash. Когда interactive режим:
+	- `Ctrl + C` will print a new prompt on a newline.
+	- `Ctrl + D` will exit the shell.
+	- `Ctrl + \` will do nothing.
+
+## Теория
 ### :page_facing_up: Fork
 **The Fork system call** используется для создания нового процесса, называемого дочерним процессом, который выполняется одновременно с процессом, вызывающим fork () (родительский процесс). После создания нового дочернего процесса оба процесса выполнят следующую инструкцию после системного вызова fork (). Дочерний процесс использует тот же компьютер (счетчик программ), те же регистры процессора и те же открытые файлы, которые используются в родительском процессе. 
 
@@ -268,7 +291,7 @@ Here, In this code, after the read / write is complete, the parent and child blo
 * If some other process has a channel open for writing, the read is blocked while waiting for new data, so the output of this code freezes, because here the write terminates the parent process, and the child process is not closed.  
 
 
-## Useful links:
+## Полезные ссылки:
 [«Шелл» на С: пишем командную оболочку для Unix](https://tproger.ru/translations/unix-shell-in-c/)  
 [Tutorial - Write a Shell in C](https://brennan.io/2015/01/16/write-a-shell-in-c/)  
 [Изучаем процессы в Linux](https://habr.com/ru/post/423049/)  
@@ -280,8 +303,8 @@ Here, In this code, after the read / write is complete, the parent and child blo
 [Коды ошибок для errno](https://gist.github.com/greggyNapalm/2413028)  
 [Fork() execve and pipe](https://yanniss.github.io/k24/set005.pdf)
 
-## Other
+## Прочее
 
-**Authors:**  
+**Авторы:**  
 *[Andrey Belenov](https://github.com/luchikAR)*  
 *[Soslan Zagagov](https://github.com/fldelena)*  
