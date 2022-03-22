@@ -283,5 +283,5 @@ Here, In this code, after the read / write is complete, the parent and child blo
 ## Other
 
 **Authors:**  
-*[Mark Veligod](https://github.com/markveligod)*  
-*[Polina Baranovskaya](https://github.com/polinariabar)*  
+*[Andrey Belenov](https://github.com/luchikAR)*  
+*[Soslan](https://github.com/fldelena)*  
