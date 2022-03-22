@@ -157,11 +157,11 @@ Parent has x = 0
 Здесь изменение глобальной переменной в одном процессе не влияет на два других процесса, поскольку данные / состояние двух процессов различны. А также родительский и дочерний работают одновременно, так что есть два возможных выхода.  
   
 ### :page_facing_up: Execve()
-**The execve() system call function** is used to execute a binary executable or a script.  
-The function returns nothing on success and -1 on error.  
-The first parameter must be the path of a binary executable or a script.  
-The second must be an array of pointers on a character (char *myArray[]), and the last pointer must be set to NULL.  
-The third parameter must be an environment.  
+**The execve() system call function** используется для выполнения двоичного исполняемого файла или скрипта.
+Функция ничего не возвращает при успешном выполнении и -1 при ошибке.  
+Первым параметром должен быть путь к двоичному исполняемому файлу или скрипту.
+Второй должен быть массивом указателей на символ (char *myArray[]), а последний указатель должен быть установлен в значение NULL.  
+Третьим параметром должно быть окружение.
   
 Example:
 ```
@@ -192,12 +192,12 @@ drwxr-xr-x 39 badprog tutorial  4096 March  6 18:51 ..
 ```
 
 ### :page_facing_up: pipe
-Conceptually, a pipe is a connection between two processes, so that the standard output of one process becomes the standard input of the other process. In the UNIX operating system, pipe are useful for communicating between related processes (inter-process communication).  
+Концептуально канал(pipe) - это соединение между двумя процессами, так что стандартный вывод одного процесса становится стандартным вводом другого процесса. В операционной системе UNIX каналы полезны для обмена данными между связанными процессами (межпроцессное взаимодействие).
   
-* The pipe is a one-way link, i.e. We can use the channel so that one process writes to the channel and the other writes from the channel. It opens a channel that is an area of main memory that is treated as a" virtual file".
-* The pipe can be used by the creation process, as well as by all its child processes for reading and writing. One process can write to this "virtual file" or channel, and another related process can read from it.
-* If a process tries to read before something is written to the feed, the process is paused until something is written.
-The pipe system call finds the first two available positions in the open file table of the process and distributes them at the ends of the pipe for reading and writing.  
+* Канал является односторонним соединением, т.е. Мы можем использовать канал так, чтобы один процесс записывал в канал, а другой записывал из канала. Он открывает канал, представляющий собой область основной памяти, которая обрабатывается как "виртуальный файл".
+* Канал может использоваться процессом создания, а также всеми его дочерними процессами для чтения и записи. Один процесс может записывать в этот "виртуальный файл" или канал, а другой связанный процесс может считывать из него.
+* Если процесс пытается выполнить чтение до того, как что-то будет записано в канал, процесс приостанавливается до тех пор, пока что-то не будет записано.
+Системный вызов канала находит первые две доступные позиции в таблице открытых файлов процесса и распределяет их по концам канала для чтения и записи.  
 ![](https://github.com/markveligod/minishell/raw/master/img/2.jpg)  
   
 The syntax in C:
