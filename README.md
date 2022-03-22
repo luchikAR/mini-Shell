@@ -1,6 +1,6 @@
-# :white_check_mark: Minishell(project 2020)
+# :white_check_mark: Minishell(project 2021)
 
-## Description
+## Описание
 The existence of shells is linked to the very existence of IT. At the time, all coders agreed that communicating with a computer using aligned 1/0 switches was seriously irritating.  
 It was only logical that they came up with the idea to communicate with a computer using interactive lines of commands in a language somewhat close to english.  
 Thus the main task of this project is to write your own mini shell in C.  
