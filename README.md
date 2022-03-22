@@ -1,9 +1,9 @@
 # :white_check_mark: Minishell(project 2021)
 
 ## Описание
-The existence of shells is linked to the very existence of IT. At the time, all coders agreed that communicating with a computer using aligned 1/0 switches was seriously irritating.  
-It was only logical that they came up with the idea to communicate with a computer using interactive lines of commands in a language somewhat close to english.  
-Thus the main task of this project is to write your own mini shell in C.  
+В одно время все программисты согласились с тем, что общение с компьютером с использованием переключателей 1/0 серьезно раздражает.
+Вполне логично, что им пришла в голову идея общаться с компьютером с помощью интерактивных строк команд на языке, несколько близком к английскому.
+Таким образом, основная задача этого проекта - написать свою собственную мини-оболочку на C.
 
 ## Mini assistant  
 ### :page_facing_up: Fork
