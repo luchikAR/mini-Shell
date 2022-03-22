@@ -25,10 +25,10 @@
   
 int main(void)  
 {  
-// make two processes that work the same way  
-// program after this instruction  
+// создайте два процесса, которые работают одинаково
+// программа после этой инструкции ->
     fork();  
-    printf("Hello world!\n");  
+    printf("Hello world!\n");
     return (0);  
 }  
 ```
@@ -37,22 +37,22 @@ Output:
 Hello world!  
 Hello world!  
 ```
-The number of times `'hello'` is printed is equal to the number of processes created. The total number of processes = 2^n, where n is the number of fork system calls. So here n = 3, 2^3 = 8  
-Let's put some placemark names for three rows:  
+Количество раз, когда печатается `'hello'`, равно количеству созданных процессов. Общее количество процессов = 2^n, где n - количество системных вызовов fork. Итак, в примере ниже n = 3, 2 ^ 3 = 8
+Давайте дадим несколько имен для строк:  
 ```
 fork ();   // Line 1  
 fork ();   // Line 2  
 fork ();   // Line 3  
   
-       L1       // There will be 1 child process  
-    /     \     // created by line 1.  
-  L2      L2    // There will be 2 child processes  
- /  \    /  \   //  created by line 2  
-L3  L3  L3  L3  // There will be 4 child processes  
-                // created by line 3  
+       L1       // Там будет 1 дочерний процесс 
+    /     \     // создано строкой Line 1.  
+  L2      L2    // Там будет 2 дочерних процесса 
+ /  \    /  \   //  создано строкой Line 2.  
+L3  L3  L3  L3  // Там будет 4 дочерних процесса
+                // создано строкой Line 3.
 ```
-Thus, there are a total of eight processes (new child processes and one original process).  
-If we want to represent the relationships between processes in a tree hierarchy, this is as follows:  
+Таким образом, существует в общей сложности восемь процессов (новые дочерние процессы и один исходный процесс).  
+Если мы хотим представить отношения между процессами в древовидной иерархии, это выглядит следующим образом:
 Main process: P0  
 Processes created by the 1st fork: **P1**  
 Processes created by the 2nd fork: **P2, P3**  
@@ -66,7 +66,7 @@ Processes created by the 3rd fork: **P4, P5, P6, P7**
    /  
  P7  
 ```
-We predict the output of the next program:  
+Мы прогнозируем результат следующей программы:  
 ```
 #include <stdio.h>  
 #include <sys/types.h>  
@@ -74,10 +74,10 @@ We predict the output of the next program:
   
 void forkexample()  
 {  
-    // child process, because the return value is zero  
+    // дочерний процесс, поскольку возвращаемое значение равно нулю
     if (fork() == 0)  
         printf("Hello from Child!\n");  
-    // parent process, because the return value is non-zero.  
+    // родительский процесс, потому что возвращаемое значение не равно нулю.
     else  
         printf("Hello from Parent!\n");  
 }  
@@ -97,11 +97,11 @@ Hello from Parent!
 Hello from Parent!  
 Hello from Child!  
 ```
-The code above creates a child process. fork () returns 0 in the child process and a positive integer in the parent process.
-There are two possible outputs here, because the parent process and the child process work simultaneously. So we don't know if the OS will first pass control to the parent process or to the child process.  
+Приведенный выше код создает дочерний процесс. fork () возвращает 0 в дочернем процессе и положительное целое число в родительском процессе.
+Здесь есть два возможных выхода, потому что родительский процесс и дочерний процесс работают одновременно. Таким образом, мы не знаем, будет ли ОС сначала передавать управление родительскому процессу или дочернему процессу. 
   
-**Important:** the parent process and child process run the same program, but this does not mean that they are identical. The OS allocates different data and States for these two processes, and the control flow for these processes may be different.  
-See the following example:
+**Important:** родительский процесс и дочерний процесс запускают одну и ту же программу, но это не означает, что они идентичны. Операционная система выделяет разные данные и состояния для этих двух процессов, и поток управления для этих процессов может отличаться.
+Смотрите следующий пример:
 
 ```
 #include <stdio.h>  
@@ -131,7 +131,7 @@ Child has x = 2
 Child has x = 2  
 Parent has x = 0  
 ```
-Here, changing a global variable in one process does not affect the other two processes, because the data / state of the two processes is different. As well as the parent and child work simultaneously, so there are two possible outputs.  
+Здесь изменение глобальной переменной в одном процессе не влияет на два других процесса, поскольку данные / состояние двух процессов различны. А также родительский и дочерний работают одновременно, так что есть два возможных выхода.  
   
 ### :page_facing_up: Execve()
 **The execve() system call function** is used to execute a binary executable or a script.  
@@ -284,4 +284,4 @@ Here, In this code, after the read / write is complete, the parent and child blo
 
 **Authors:**  
 *[Andrey Belenov](https://github.com/luchikAR)*  
-*[Soslan](https://github.com/fldelena)*  
+*[Soslan Zagagov](https://github.com/fldelena)*  
