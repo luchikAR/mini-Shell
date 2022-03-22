@@ -210,7 +210,7 @@ fd[1] will be the fd for the write end of pipe.
 Returns : 0 on Success.  
 -1 on error.  
 ```
-Pipes behave like FIFO ("first in,first out"), pipes behave like a queue data structure . The read and write size should not be the same here. We can write 512 bytes at a time, but we can only read 1 byte at a time in the pipe.  
+Каналы ведут себя как FIFO ("первый вход, первый выход"), каналы ведут себя как структура данных очереди. Размер чтения и записи здесь не должен быть одинаковым. Мы можем записывать 512 байт за раз, но мы можем считывать только 1 байт за раз в канале.
 
 ```
 #include <stdio.h>  
@@ -243,7 +243,7 @@ hello, world #2
 hello, world #3  
 ```
   
-When we use a fork in any process, the file descriptors remain open for the child process as well as for the parent process. If we call fork after creating the pipe, then parent and child can communicate through the pipe.  
+Когда мы используем fork в любом процессе, файловые дескрипторы остаются открытыми как для дочернего процесса, так и для родительского процесса. Если мы вызовем fork после создания канала, то родитель и потомок смогут взаимодействовать через канал.  
   
 ![](https://github.com/markveligod/minishell/raw/master/img/3.jpg)  
 
@@ -285,10 +285,10 @@ hello world, #2
 hello world, #3  
 (hangs)         //program does not terminate but hangs  
 ```
-Here, In this code, after the read / write is complete, the parent and child blocks instead of completing the process, and so the program freezes. This is because the read system call gets as much data as it requests, or as much data as the pipe has, whichever is smaller.
+Здесь, в этом коде, после завершения чтения / записи родительский и дочерний блоки вместо завершения процесса, и поэтому программа зависает. Это происходит потому, что системный вызов read получает столько данных, сколько запрашивает, или столько данных, сколько есть в канале, в зависимости от того, что меньше.
 
-* If the pipe is empty and we call the read system call, then Reads on the pipe will return EOF (the return value is 0) if none of the processes have the end of the write open.
-* If some other process has a channel open for writing, the read is blocked while waiting for new data, so the output of this code freezes, because here the write terminates the parent process, and the child process is not closed.  
+* Если канал пуст и мы вызываем системный вызов read, то чтение по каналу вернет EOF (возвращаемое значение равно 0), если ни у одного из процессов не открыт конец записи.
+* Если у какого-либо другого процесса открыт канал для записи, чтение блокируется во время ожидания новых данных, поэтому вывод этого кода зависает, потому что здесь запись завершает родительский процесс, а дочерний процесс не закрывается. 
 
 
 ## Полезные ссылки:
