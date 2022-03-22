@@ -5,19 +5,19 @@
 Вполне логично, что им пришла в голову идея общаться с компьютером с помощью интерактивных строк команд на языке, несколько близком к английскому.
 Таким образом, основная задача этого проекта - написать свою собственную мини-оболочку на C.
 
-## Mini assistant  
+## Немного теории  
 ### :page_facing_up: Fork
-**The Fork system call** is used to create a new process called a child process that runs simultaneously with the process that makes the fork () call (the parent process). After creating a new child process, both processes will execute the following statement after the fork () system call. The child process uses the same computer (program counter), the same CPU registers, and the same open files that are used in the parent process.  
+**The Fork system call** используется для создания нового процесса, называемого дочерним процессом, который выполняется одновременно с процессом, вызывающим fork () (родительский процесс). После создания нового дочернего процесса оба процесса выполнят следующую инструкцию после системного вызова fork (). Дочерний процесс использует тот же компьютер (счетчик программ), те же регистры процессора и те же открытые файлы, которые используются в родительском процессе. 
 
-It does not accept parameters and returns an integer value. The various values returned by fork () are shown below.  
+Он не принимает параметры и возвращает целочисленное значение. Различные значения, возвращаемые функцией fork (), показаны ниже. 
 
-**Negative value:** creating a child process failed.
-**Zero:** returned to the newly created child process.
-**A positive value** is returned to the parent or to the subscriber. This value contains the process ID of the newly created child process.  
+**Negative value:** не удалось создать дочерний процесс.
+**Zero:** вернулся к вновь созданному дочернему процессу.
+**A positive value** возвращается родителю. Это значение содержит идентификатор процесса вновь созданного дочернего процесса.
   
 ![](https://github.com/markveligod/minishell/raw/master/img/1.jpg)  
   
-Predict the output of the next program:
+Предсказать результат следующей программы:
 ```
 #include <stdio.h>  
 #include <sys/types.h>  
